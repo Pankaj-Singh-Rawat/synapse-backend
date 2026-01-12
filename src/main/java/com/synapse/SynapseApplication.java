@@ -1,4 +1,4 @@
-package com.synapse.synapse;
+package com.synapse;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
