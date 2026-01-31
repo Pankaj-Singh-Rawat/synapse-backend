@@ -1,6 +1,7 @@
 package com.synapse.auth.controller;
 
 import com.synapse.auth.dto.LoginRequest;
+import com.synapse.auth.dto.RegisterRequest;
 import com.synapse.auth.security.jwt.JwtUtil;
 import com.synapse.auth.service.AuthService;
 import io.jsonwebtoken.Jwts;
@@ -23,4 +24,11 @@ public class AuthController {
     public String login(@RequestBody LoginRequest request) {
         return authService.login(request);
     }
+
+    @PostMapping("/register")
+    public String register(@RequestBody RegisterRequest request) {
+        authService.register(request);
+        return "User registered successfully";
+    }
+
 }

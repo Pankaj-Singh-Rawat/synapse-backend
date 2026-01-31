@@ -1,6 +1,7 @@
 package com.synapse.auth.service;
 
 import com.synapse.auth.dto.LoginRequest;
+import com.synapse.auth.dto.RegisterRequest;
 import com.synapse.auth.security.jwt.JwtUtil;
 import com.synapse.user.entity.User;
 import com.synapse.user.repository.UserRepository;
@@ -23,6 +24,24 @@ public class AuthService {
         this.passwordEncoder = passwordEncoder;
         this.jwtUtil = jwtUtil;
     }
+
+    public void register(RegisterRequest request) {
+
+        if (userRepository.findByUsername(request.username()).isPresent()) {
+            throw new RuntimeException("Username already exists");
+        }
+
+        String hashedPassword = passwordEncoder.encode(request.password());
+
+        User user = new User(
+                request.username(),
+                hashedPassword,
+                "USER"
+        );
+
+        userRepository.save(user);
+    }
+
 
     public String login(LoginRequest request) {
 
