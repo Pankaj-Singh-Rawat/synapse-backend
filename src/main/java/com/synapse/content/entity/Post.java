@@ -22,7 +22,7 @@ public class Post {
     @Column(nullable = false, length = 1000)
     private String content;
 
-    private LocalDateTime localDateTime;
+    private LocalDateTime createdAt;
 
     public Post() {
     }
@@ -49,7 +49,7 @@ public class Post {
         return content;
     }
 
-    public LocalDateTime getLocalDateTime() {
-        return localDateTime;
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
     }
 }
